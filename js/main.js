@@ -26,21 +26,23 @@ const DESCRIPTIONS = [
 ];
 const SIMILAR_PHOTO_COUNT = 25;
 
-const getRandomArrayElement = (elements) => elements[getRandomNumber(0, DESCRIPTIONS.length - 1)];
+const getRandomArrayElement = (elements) => elements[getRandomNumber(0, elements.length - 1)];
 
 function counter() {
   const result = counter.value ? ++counter.value : counter.value = 1;
   return result;
 }
-const counterPad = () => `${counter.value}`.padStart(SIMILAR_PHOTO_COUNT.toString().length, 0);
 
-const createPhotoEntity = () => ({
-  id: counter(),
-  url: `photos/${counterPad()}.jpg`,
-  description: getRandomArrayElement(DESCRIPTIONS),
-  likes: getRandomNumber(15, 200),
-  comments: getRandomNumber(0, 200),
-});
+const createPhotoEntity = () => {
+  const id = counter();
+  return {
+    id: id,
+    url: `photos/${id}.jpg`,
+    description: getRandomArrayElement(DESCRIPTIONS),
+    likes: getRandomNumber(15, 200),
+    comments: getRandomNumber(0, 200),
+  };
+};
 
 const similarPhotos = Array.from({length: SIMILAR_PHOTO_COUNT}, createPhotoEntity);
 
