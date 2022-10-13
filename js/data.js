@@ -22,4 +22,4 @@ const createPhotoEntity = () => {
 
 const similarPhotos = () => Array.from({length: SIMILAR_PHOTO_COUNT}, createPhotoEntity);
 
-export {getRandomNumber, counter, similarPhotos};
+export {similarPhotos};
