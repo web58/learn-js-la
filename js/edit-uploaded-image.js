@@ -8,10 +8,8 @@ const STEP_SCALE = 25,
   MIN_VALUE_SCALE = 25,
   MAX_VALUE_SCALE = 100;
 
-const getIntegerStepValue = () => parseInt(controlInput.value, 10);
-
-const setStyleTransform = () => {
-  imageElement.style.transform = `scale(${getIntegerStepValue() / 100})`;
+const setStyleTransform = (value) => {
+  imageElement.style.transform = `scale(${value / 100})`;
 };
 
 function resetImage () {
@@ -20,16 +18,18 @@ function resetImage () {
 }
 
 controlSmaller.addEventListener('click', () => {
-  if (getIntegerStepValue() > MIN_VALUE_SCALE) {
-    controlInput.value = `${getIntegerStepValue() - STEP_SCALE}%`;
-    setStyleTransform();
+  const curStepValue = parseInt(controlInput.value, 10);
+  if (curStepValue > MIN_VALUE_SCALE) {
+    controlInput.value = `${curStepValue - STEP_SCALE}%`;
+    setStyleTransform(curStepValue - STEP_SCALE);
   }
 });
 
 controlBigger.addEventListener('click', () => {
-  if (getIntegerStepValue() < MAX_VALUE_SCALE) {
-    controlInput.value = `${getIntegerStepValue() + STEP_SCALE}%`;
-    setStyleTransform();
+  const curStepValue = parseInt(controlInput.value, 10);
+  if (curStepValue < MAX_VALUE_SCALE) {
+    controlInput.value = `${curStepValue + STEP_SCALE}%`;
+    setStyleTransform(curStepValue + STEP_SCALE);
   }
 });
 
