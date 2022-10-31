@@ -1,4 +1,5 @@
 import {isEscapeKey} from './util.js';
+import {resetImage} from './edit-uploaded-image.js';
 
 const form = document.forms['upload-select-image'];
 const uploadFileInput = form['upload-file'];
@@ -23,6 +24,7 @@ function closeModal () {
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onPopupEscKeydown);
   form.reset();
+  resetImage();
 }
 
 uploadFileInput.addEventListener('change', () => {
