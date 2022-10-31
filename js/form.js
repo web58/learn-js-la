@@ -8,7 +8,6 @@ const modalCloseElement = form['upload-cancel'];
 
 const onPopupEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
-    evt.preventDefault();
     closeModal();
   }
 };
