@@ -1,7 +1,7 @@
 import {renderPhotos} from './users-pictures.js';
 import {setFormUploadSubmit} from './upload-form.js';
 import {getData} from './api.js';
-import {showErrorMessage, showSuccessMessage} from './errors.js';
+import {showErrorMessage, showSuccessMessage} from './messages.js';
 
 getData(
   (photos) => {

@@ -8,9 +8,6 @@ const onSuccessEscKeydown = (evt) => {
 };
 const onErrorEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
-    if (document.body.classList.contains('modal-open')) {
-      document.removeEventListener('keydown', onPopupEscKeydown);
-    }
     removeErrorMessage();
   }
 };
@@ -59,6 +56,10 @@ function showErrorMessage(title, btnText) {
   }
 
   document.body.appendChild(messageElement);
+
+  if (document.body.classList.contains('modal-open')) {
+    document.removeEventListener('keydown', onPopupEscKeydown);
+  }
 
   btnClose.addEventListener('click', removeErrorMessage);
   document.addEventListener('keydown', onErrorEscKeydown);
