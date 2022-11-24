@@ -12,13 +12,13 @@ const onPopupEscKeydown = (evt) => {
   }
 };
 
-function openModal () {
+function openModal() {
   modalElement.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onPopupEscKeydown);
 }
 
-function closeModal () {
+function closeModal() {
   modalElement.classList.add('hidden');
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onPopupEscKeydown);
@@ -34,19 +34,4 @@ modalCloseElement.addEventListener('click', () => {
   closeModal();
 });
 
-/**
- * Validation
- */
-
-const pristine = new Pristine(form, {
-  classTo: 'img-upload__text',
-  errorTextParent: 'img-upload__text',
-});
-
-form.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  const isValid = pristine.validate();
-  if (isValid) {
-    form.submit();
-  }
-});
+export {onPopupEscKeydown, closeModal};
